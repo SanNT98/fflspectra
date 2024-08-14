@@ -1,0 +1,451 @@
+html,
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    overflow: hidden;
+    /* Prevent scrollbars */
+    background-color: #483037;
+    color: #f7ebcf;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./Montserrat-MediumItalic.otf') format('opentype');
+    font-weight: 500;
+}
+
+.background-container {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    width: 100%;
+    background: url('./background.webp') no-repeat center center;
+    background-size: contain;
+}
+
+h1,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#note-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 80%;
+}
+
+#center-image {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 300px;
+    opacity: 80%;
+}
+
+.yellow-neon {
+    text-align: center;
+    color: rgba(255, 239, 210, 0.9);
+    text-shadow: 0 0 5px rgba(255, 245, 0, 1), 0 0 28px rgba(255, 44, 0, 0.9),
+        0 8px 38px black, 0 8px 10px black, 0 2px 12px black,
+        0 0 50px rgba(255, 120, 0, 0.5), 0 0 24px rgba(255, 255, 255, 0.8);
+    -webkit-text-stroke: 1px rgba(255, 160, 0, 0.45);
+}
+
+.red-neon {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    /* White color for the main text */
+    text-shadow:
+        0 0 5px rgba(255, 0, 0, 1),
+        /* Inner red glow */
+        0 0 28px rgba(255, 0, 0, 0.9),
+        /* Outer red glow */
+        0 8px 38px black,
+        /* Black shadow for depth */
+        0 8px 10px black,
+        /* Additional shadow for more depth */
+        0 2px 12px black,
+        /* Smaller shadow for additional depth */
+        0 0 50px rgba(255, 0, 0, 0.5),
+        /* Intense red glow */
+        0 0 24px rgba(255, 255, 255, 0.8);
+    /* White highlight for shine */
+    -webkit-text-stroke: 1px rgba(255, 0, 0, 0.45);
+    /* Red text stroke */
+}
+
+.blue-neon {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow:
+        0 0 5px rgba(0, 255, 255, 1),
+        0 0 28px rgba(0, 255, 255, 0.9),
+        0 8px 38px black,
+        0 8px 10px black,
+        0 2px 12px black,
+        0 0 50px rgba(0, 255, 255, 0.5),
+        0 0 24px rgba(255, 255, 255, 0.8);
+    -webkit-text-stroke: 1px rgba(0, 255, 255, 0.45);
+}
+
+.green-neon {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow:
+        0 0 5px rgba(0, 255, 0, 1),
+        0 0 28px rgba(0, 255, 0, 0.9),
+        0 8px 38px black,
+        0 8px 10px black,
+        0 2px 12px black,
+        0 0 50px rgba(0, 255, 0, 0.5),
+        0 0 24px rgba(255, 255, 255, 0.8);
+    -webkit-text-stroke: 1px rgba(0, 255, 0, 0.45);
+}
+
+.purple-neon {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow:
+        0 0 5px rgba(128, 0, 128, 1),
+        0 0 28px rgba(128, 0, 128, 0.9),
+        0 8px 38px black,
+        0 8px 10px black,
+        0 2px 12px black,
+        0 0 50px rgba(128, 0, 128, 0.5),
+        0 0 24px rgba(255, 255, 255, 0.8);
+    -webkit-text-stroke: 1px rgba(128, 0, 128, 0.45);
+}
+
+.center-text {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 60px;
+    margin-top: 230px;
+    user-select: none;
+}
+
+.sub-text {
+    font-family: "Spectral", serif;
+    font-weight: 400;
+    font-style: normal;
+    user-select: none;
+    margin-top: 0;
+    display: none;
+}
+
+.text {
+    font-family: "Spectral", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.8);
+    -webkit-text-stroke: 1px rgba(238, 226, 226, 0.45);
+    transform: translateX(-50%);
+    position: absolute;
+    user-select: none;
+    left: 50%;
+}
+
+
+/* Search Bar */
+#name-input {
+    margin-top: 50px;
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+}
+
+.note {
+    font-family: sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    color: #f7ebcf;
+    -webkit-text-stroke: 1px rgba(238, 226, 226, 0.45);
+    transform: translateX(-50%);
+    user-select: none;
+    left: 50%;
+}
+
+#search {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em 0;
+    padding: 0.5em 0.5em 0.5em 1em;
+    transition: all 0.5s;
+    width: 300px;
+}
+
+#search:hover,
+#search:focus {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#search button,
+#search input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    outline: 0;
+    height: 30px;
+    color: #f7ebcf;
+}
+
+#search button {
+    cursor: pointer;
+    padding: 0 0.25em;
+    color: #f7ebcf;
+}
+
+#search input {
+    flex: 1;
+}
+
+#search input::-moz-placeholder {
+    color: #f7ebcf;
+}
+
+#search input:-ms-input-placeholder {
+    color: #f7ebcf;
+}
+
+#search input::placeholder {
+    color: #f7ebcf;
+}
+
+#search .spinner {
+    -webkit-animation: spinner 1s infinite linear;
+    animation: spinner 1s infinite linear;
+    display: none;
+    padding: 0 0.25em;
+    color: #f7ebcf;
+}
+
+#search.loading button {
+    display: none;
+}
+
+#search.loading .spinner {
+    display: block;
+}
+
+@-webkit-keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#content {
+    text-align: center;
+    color: #f7ebcf;
+    /* Light cream color */
+    text-shadow:
+        0 0 5px rgb(247 235 207, 1),
+        0 0 10px rgb(247 235 207, 1),
+        0 0 15px rgb(247 235 207, 1),
+        0 0 20px rgba(255, 204, 0, 0.3),
+        /* Adds a bit of yellowish glow */
+        0 0 30px rgba(255, 204, 0, 0.2),
+        0 0 40px rgba(255, 204, 0, 0.15),
+        0 0 50px rgba(255, 204, 0, 0.1),
+        0 0 60px rgba(255, 204, 0, 0.05);
+    -webkit-text-stroke: 1px rgba(255, 204, 0, 0.2);
+}
+
+section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    border-radius: 10px;
+    margin-top: 45px;
+    width: 300px;
+    height: auto;
+    padding: 20px;
+    background: linear-gradient(45deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px #000;
+    border-top: 2px solid rgba(255, 255, 255, 0.25);
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.card img {
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.card h2 {
+    color: #fff;
+    font-weight: normal;
+    font-size: 25px;
+}
+
+.card p {
+    color: #fff;
+    text-align: justify;
+    font-size: 15px;
+}
+
+.card button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    border-radius: 50%;
+    border: none;
+    margin-right: 10px;
+    color: #f7ebcf;
+    transition: 0.4s all;
+    cursor: pointer;
+}
+
+.button {
+    display: inline-flex;
+    height: 40px;
+    width: 200px;
+    border: 2px solid #f7ebcf;
+    margin: 20px 20px 20px 20px;
+    color: #f7ebcf;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Second Button */
+
+#button-2 {
+    overflow: hidden;
+    cursor: pointer;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+a {
+    color: #f7ebcf;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+#button-2 a {
+    position: relative;
+    transition: all .35s ease-Out;
+}
+
+#slide {
+    width: 100%;
+    height: 100%;
+    left: -200px;
+    background: #BFC0C0;
+    position: absolute;
+    transition: all .35s ease-Out;
+    bottom: 0;
+}
+
+#button-2:hover #slide {
+    left: 0;
+}
+
+#button-2:hover a {
+    color: #2D3142;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Style for the element when it is hidden */
+.hidden {
+    display: none;
+}
+
+/* Style for the element when it is visible with fade-in animation */
+.visible {
+    display: block;
+    /* Make the element visible */
+    opacity: 0;
+    /* Start with invisible */
+    animation: fadeIn 2s forwards;
+    /* Apply the fade-in animation */
+}
+
+/* Adjust the layout for different screen sizes */
+@media (max-width: 768px) {
+    .background-container {
+        background-size: cover;
+    }
+}
+
+/* Adjust the layout for different screen sizes */
+@media (max-width: 415px) {
+    .center-text {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 45px;
+        margin-top: 150px;
+        user-select: none;
+    }
+
+    #center-image {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-height: 200px;
+        opacity: 80%;
+    }
+}
